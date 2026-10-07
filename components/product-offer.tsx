@@ -2,20 +2,31 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Minus, Plus, Truck, CreditCard, CheckCircle2 } from "lucide-react";
-import { product, benefitAreas } from "@/lib/product-data";
+import { Minus, Plus, Truck, LockKeyhole, MapPin, Store, CheckCircle2 } from "lucide-react";
+import { product, benefitAreas, jarDuration } from "@/lib/product-data";
+import { siteConfig } from "@/lib/site-config";
 import { formatNaira } from "@/lib/utils";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { ShopButton } from "@/components/ui/shop-button";
+import { WhatsAppButton } from "@/components/ui/whatsapp-button";
+
+const localTrust = [
+  { label: "In stock and available in Nigeria", icon: MapPin },
+  { label: "Home delivery in Lagos, shipping to other states", icon: Truck },
+  { label: `Secure checkout with ${siteConfig.petshopPlus.name}`, icon: LockKeyhole },
+  { label: `Or buy in store: ${siteConfig.contact.outlets}`, icon: Store },
+];
 
 export function ProductOffer() {
   const [qty, setQty] = useState(1);
+  const total = product.price * qty;
+  const orderMessage = `Hello, I want to order ${qty} ${qty === 1 ? "jar" : "jars"} of ${product.name} (${formatNaira(product.price)} each, total ${formatNaira(total)}).`;
 
   return (
-    <section id="offer" className="bg-bg py-16 text-ink sm:py-20">
+    <section id="offer" className="bg-bg-soft py-16 text-ink sm:py-20">
       <div className="container-page">
-        <SectionHeading eyebrow="The Offer" title="Bring home the multi-benefit formula." />
+        <SectionHeading eyebrow="The Offer" title="Daily multi-benefit support, one jar." />
 
         <Reveal
           delay={0.1}
@@ -47,7 +58,7 @@ export function ProductOffer() {
                 {formatNaira(product.price)}
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/12 px-3 py-1 text-xs font-semibold text-accent">
-                <CheckCircle2 className="h-3.5 w-3.5" /> In stock
+                <CheckCircle2 className="h-3.5 w-3.5" /> In stock in Nigeria
               </span>
             </div>
 
@@ -87,23 +98,34 @@ export function ProductOffer() {
               </div>
             </div>
 
-            <div className="mt-6 flex flex-col gap-2.5 text-[13px] text-ink-muted">
-              <div className="flex items-center gap-2.5">
-                <Truck className="h-4 w-4 shrink-0 text-accent" />
-                <span>Delivery information confirmed at checkout.</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <CreditCard className="h-4 w-4 shrink-0 text-accent" />
-                <span>Payment options provided at checkout.</span>
-              </div>
-            </div>
+            <p className="mt-4 font-data text-[12px] text-ink-muted">
+              From ≈{formatNaira(jarDuration[0].costPerDay)} a day at 1 chew
+              daily · a jar lasts ≈{jarDuration[0].days} days
+            </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              <ShopButton size="lg">{product.ctas.addToCart}</ShopButton>
-              <ShopButton size="lg" variant="outline">
+              <ShopButton size="lg" href={siteConfig.cart.link(qty)}>
                 {product.ctas.buyNow}
               </ShopButton>
+              <WhatsAppButton size="lg" message={orderMessage}>
+                {product.ctas.orderWhatsapp}
+              </WhatsAppButton>
             </div>
+            <p className="mt-3 text-[13px] text-ink-muted">
+              Buy Now adds {qty} {qty === 1 ? "jar" : "jars"} (
+              {formatNaira(total)}) to your {siteConfig.petshopPlus.name}{" "}
+              cart. Prefer to chat? Send the same order on WhatsApp and
+              we&apos;ll take it from there.
+            </p>
+
+            <ul className="mt-6 grid grid-cols-1 gap-2.5 border-t border-bg-border pt-5 text-[13px] text-ink-muted sm:grid-cols-2">
+              {localTrust.map((item) => (
+                <li key={item.label} className="flex items-start gap-2.5">
+                  <item.icon className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                  <span>{item.label}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </Reveal>
       </div>

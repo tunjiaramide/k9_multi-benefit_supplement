@@ -27,7 +27,7 @@ export function StickyMobileCta() {
           {formatNaira(product.price)}
         </span>
         <ShopButton size="md" className="flex-1" showIcon={false}>
-          {product.ctas.addToCart}
+          {product.ctas.stickyMobile}
         </ShopButton>
       </div>
     </div>

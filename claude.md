@@ -14,6 +14,49 @@ see BLOG ARCHITECTURE below. This supersedes the original brief's
 "WordPress REST API in a later phase" plan (see FUTURE WORDPRESS
 INTEGRATION further down, which is now historical, not the live plan).
 
+REVISION PASS 3 (2026-10-07): client review doc ("PrimoScience K9 Multi
+supplement landing page review 2026.docx") implemented. Where this
+section conflicts with older text further down, this section wins.
+- Homepage order (app/page.tsx): hero, at-a-glance (replaces trust-strip,
+  which was deleted), benefits, wellness-overview, product-facts ("Inside
+  one 3.5 g chew" -- 6 headline quantities large, other 7 as rows, plus
+  inactive ingredients), ingredient-system (what it is + why it's
+  included, per ingredient), who-its-for, why-choose, usage-section
+  (serving by weight + how long a jar lasts), testimonials, faq, offer,
+  blog preview, final-cta.
+- Hero H1 is "One Soft Chew. Four Areas of Support." -- deliberately NOT
+  the doc's "One Daily Chew", because the official serving may be more
+  than one chew a day. The badge reads "Science-led nutritional support"
+  instead of "Scientifically formulated" (that phrase is on the jar label
+  but the client asked for softer wording unless evidence is shown).
+- DOSAGE IS STILL UNVERIFIED. `dosingRows` in lib/product-data.ts is an
+  empty array; the manufacturer's weight/serving table isn't published
+  online. Fill it from the jar's directions panel and the table renders
+  automatically in usage-section.tsx. Never guess these numbers.
+- `testimonials` is now EMPTY (placeholders removed at the client's
+  request), so the "Reviews coming soon" state shows. Add genuine reviews
+  only; the type supports optional date / dog / photo.
+- WhatsApp: components/ui/whatsapp-button.tsx, used in usage, reviews,
+  offer and final CTA. Number defaults to Petshop Plus's WhatsApp line
+  (0704 558 4152, from their shipping page); override with
+  NEXT_PUBLIC_WHATSAPP_NUMBER.
+- ORDER FLOW (supersedes the checkoutUrl notes below): every ShopButton
+  defaults to `siteConfig.orderSectionHref` ("/#offer"), so Shop Now
+  buttons scroll to the order section instead of leaving the site. Only
+  "Buy Now" inside product-offer.tsx goes out, to
+  `siteConfig.cart.link(qty)` =
+  https://petshopplus.ng/cart/?add-to-cart=21961&quantity=N (21961 is the
+  WooCommerce product ID; tested, the cart opens with that quantity).
+  "Order on WhatsApp" next to it sends a prefilled order message with the
+  quantity and total. `checkoutUrl` is no longer used by any component.
+- Footer now has a contact block driven by `siteConfig.contact` (phone,
+  WhatsApp, VI address, outlets link). Email and Instagram render only
+  when NEXT_PUBLIC_CONTACT_EMAIL / NEXT_PUBLIC_INSTAGRAM_URL are set --
+  the owner hasn't supplied them yet.
+- Node.js is not installed system-wide on this machine. A portable copy
+  lives at %USERPROFILE%\.local\node\node-v22.23.3-win-x64 -- prepend it
+  to PATH before running npm.
+
 All sections below have been updated in place rather than left as a
 changelog.
 

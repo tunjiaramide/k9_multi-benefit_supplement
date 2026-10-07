@@ -1,18 +1,28 @@
 import Image from "next/image";
 import { PackageCheck } from "lucide-react";
-import { productFacts, doesNotContain, product } from "@/lib/product-data";
+import {
+  productFacts,
+  doesNotContain,
+  inactiveIngredients,
+  probioticStrains,
+  activeCount,
+  product,
+} from "@/lib/product-data";
 import { galleryImages } from "@/lib/gallery-images";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 
 export function ProductFacts() {
+  const keyFacts = productFacts.filter((row) => row.key);
+  const otherFacts = productFacts.filter((row) => !row.key);
+
   return (
     <section id="product-facts" className="bg-bg py-16 text-ink sm:py-20">
       <div className="container-page">
         <SectionHeading
-          eyebrow="Product Facts"
-          title="Verified active ingredients, per chew."
-          description={`Displayed per ${product.servingSize}.`}
+          eyebrow={`${activeCount} key active ingredients per chew`}
+          title="Inside one 3.5 g chew."
+          description="Every active ingredient and its amount, as listed on the product label."
         />
 
         <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_0.86fr] lg:items-start lg:gap-8">
@@ -30,11 +40,26 @@ export function ProductFacts() {
                 Per {product.servingSize}
               </span>
             </div>
-            <div>
-              {productFacts.map((row) => (
+            <div className="grid grid-cols-2 gap-px border-y-2 border-label-ink bg-label-ink/15 sm:grid-cols-3">
+              {keyFacts.map((row) => (
+                <div key={row.name} className="bg-paper px-5 py-4 sm:px-7">
+                  <p className="font-display text-[1.6rem] font-extrabold leading-none tracking-tight text-label-ink">
+                    {row.amount}
+                  </p>
+                  <p className="mt-1.5 text-[13px] leading-snug text-label-muted">
+                    {row.short ?? row.name}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p className="px-5 pt-4 font-data text-[11px] uppercase tracking-wide text-label-muted sm:px-7">
+              Plus {otherFacts.length} vitamins &amp; nutrients
+            </p>
+            <div className="mt-1">
+              {otherFacts.map((row) => (
                 <div
                   key={row.name}
-                  className="facts-row flex items-center justify-between gap-4 px-5 py-3 sm:px-7"
+                  className="facts-row flex items-center justify-between gap-4 px-5 py-2.5 sm:px-7"
                 >
                   <span className="min-w-0 text-[13.5px] text-label-ink">{row.name}</span>
                   <span className="shrink-0 font-data text-[13px] font-medium text-label-ink">
@@ -43,11 +68,19 @@ export function ProductFacts() {
                 </div>
               ))}
             </div>
-            <div className="flex items-center gap-2 border-t-2 border-label-ink px-5 py-3.5 sm:px-7">
-              <PackageCheck className="h-4 w-4 shrink-0 text-label-muted" strokeWidth={2} />
+            <div className="border-t-2 border-label-ink px-5 py-3.5 sm:px-7">
               <p className="text-[12.5px] leading-snug text-label-muted">
-                Formulated as a nutritional supplement, not a substitute for a
-                complete and balanced diet.
+                <span className="font-semibold text-label-ink">Glucosamine source:</span>{" "}
+                shellfish. Chondroitin source: porcine.{" "}
+                <span className="font-semibold text-label-ink">Probiotic blend:</span>{" "}
+                {probioticStrains.join(", ")}.{" "}
+                <span className="font-semibold text-label-ink">Inactive ingredients:</span>{" "}
+                {inactiveIngredients.join(", ")}.
+              </p>
+              <p className="mt-2 flex items-center gap-2 text-[12.5px] leading-snug text-label-muted">
+                <PackageCheck className="h-4 w-4 shrink-0" strokeWidth={2} />
+                A nutritional supplement, not a substitute for a complete and
+                balanced diet.
               </p>
             </div>
           </Reveal>

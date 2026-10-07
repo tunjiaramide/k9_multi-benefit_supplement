@@ -9,7 +9,11 @@ export function IngredientSystem() {
     <section id="ingredients" className="bg-bg-soft py-16 text-ink sm:py-20">
       <div className="container-page grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-14">
         <div className="min-w-0">
-          <SectionHeading eyebrow="Ingredient System" title="What's inside matters." />
+          <SectionHeading
+            eyebrow="Why Each Ingredient Is Included"
+            title="What's inside, and why."
+            description="A short, plain explanation of what each key ingredient is and the role it plays in the formula."
+          />
           <Reveal delay={0.1} className="relative mt-8 aspect-square overflow-hidden rounded-2xl">
             <Image
               src={galleryImages.benefitsBurst.src}
@@ -31,12 +35,18 @@ export function IngredientSystem() {
               <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-accent/12 text-accent">
                 <entry.icon className="h-4 w-4" strokeWidth={2} />
               </span>
-              <div>
-                <p className="font-display text-[0.95rem] font-bold text-ink">
+              <div className="min-w-0">
+                <h3 className="font-display text-[0.95rem] font-bold text-ink">
                   {entry.name}
+                </h3>
+                <p className="mt-0.5 font-data text-[11px] uppercase tracking-wide text-accent">
+                  {entry.amount}
                 </p>
-                <p className="mt-0.5 text-[13.5px] leading-relaxed text-ink-muted">
-                  {entry.copy}
+                <p className="mt-2 text-[13.5px] leading-relaxed text-ink">
+                  {entry.what}
+                </p>
+                <p className="mt-1 text-[13.5px] leading-relaxed text-ink-muted">
+                  {entry.why}
                 </p>
               </div>
             </Reveal>

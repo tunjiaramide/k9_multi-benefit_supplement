@@ -89,7 +89,7 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <ShopButton size="lg" className="mt-2 w-full">
+            <ShopButton size="lg" className="mt-2 w-full" onClick={() => setOpen(false)}>
               {product.ctas.nav}
             </ShopButton>
           </div>
