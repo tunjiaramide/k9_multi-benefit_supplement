@@ -5,7 +5,7 @@ import { FaqAccordion } from "@/components/ui/faq-accordion";
 
 export function FaqSection() {
   return (
-    <section id="faq" className="bg-bg-soft py-16 text-ink sm:py-20">
+    <section id="faq" className="bg-bg py-16 text-ink sm:py-20">
       <div className="container-page">
         <SectionHeading eyebrow="FAQ" title="Questions, answered." />
 

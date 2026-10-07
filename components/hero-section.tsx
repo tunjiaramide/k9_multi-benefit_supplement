@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FlaskConical } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { ShopButton } from "@/components/ui/shop-button";
-import { product } from "@/lib/product-data";
+import { product, supportAreas, activeCount } from "@/lib/product-data";
 import { galleryImages } from "@/lib/gallery-images";
 
 export function HeroSection() {
@@ -20,24 +20,40 @@ export function HeroSection() {
             <div className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-ink/5 px-3.5 py-1.5">
               <FlaskConical className="h-3.5 w-3.5 text-highlight" />
               <span className="font-data text-[11px] uppercase tracking-[0.16em] text-ink/80">
-                Scientifically formulated
+                Science-led nutritional support
               </span>
             </div>
           </Reveal>
 
           <Reveal delay={0.08}>
             <h1 className="mt-5 font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-tight text-balance sm:text-[3rem] lg:text-[3.3rem]">
-              Complete Daily Wellness Support for Your Dog.
+              One Soft Chew. <span className="text-accent">Four Areas of Support.</span>
             </h1>
           </Reveal>
 
-          <Reveal delay={0.16}>
-            <p className="mt-5 max-w-md text-[1.05rem] leading-relaxed text-ink-muted">
-              {product.description}
+          <Reveal delay={0.14}>
+            <ul className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[0.98rem] font-semibold text-ink">
+              {supportAreas.map((area, i) => (
+                <li key={area} className="inline-flex items-center gap-3">
+                  {i > 0 ? (
+                    <span aria-hidden className="h-1 w-1 rounded-full bg-accent" />
+                  ) : null}
+                  {area}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <p className="mt-4 max-w-md text-[1.05rem] leading-relaxed text-ink-muted">
+              {activeCount} key active ingredients in every chew, including
+              glucosamine, chondroitin, MSM, wild Alaskan salmon oil and a
+              1 billion CFU probiotic blend. A daily supplement for dogs,
+              available in Nigeria.
             </p>
           </Reveal>
 
-          <Reveal delay={0.24}>
+          <Reveal delay={0.26}>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <ShopButton size="lg">{product.ctas.primary}</ShopButton>
               <a
@@ -65,10 +81,14 @@ export function HeroSection() {
           </div>
 
           <div className="facts-panel absolute -left-4 bottom-8 px-4 py-3 sm:-left-8">
-            <p className="font-data text-[10px] uppercase tracking-wide text-label-muted">
-              Active ingredients
+            <p className="font-display text-xl font-extrabold leading-none text-label-ink">
+              {activeCount}
             </p>
-            <p className="font-display text-xl font-extrabold text-label-ink">13</p>
+            <p className="mt-1 font-data text-[10px] uppercase leading-tight tracking-wide text-label-muted">
+              Key active ingredients
+              <br />
+              per chew
+            </p>
           </div>
         </Reveal>
       </div>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
 import { ShopButton } from "@/components/ui/shop-button";
+import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { product } from "@/lib/product-data";
 
 export function FinalCta() {
@@ -25,16 +26,20 @@ export function FinalCta() {
         <div className="text-center lg:text-left">
           <Reveal>
             <h2 className="font-display text-[2rem] font-extrabold leading-[1.12] tracking-tight text-balance sm:text-[2.6rem]">
-              Make daily wellness part of their routine.
+              Give your dog daily multi-benefit support.
             </h2>
           </Reveal>
           <Reveal delay={0.08}>
             <p className="mt-4 font-data text-sm uppercase tracking-[0.14em] text-ink-muted">
-              One convenient formula. Multiple areas of nutritional support.
+              Joints · Digestion · Skin &amp; coat · Everyday wellness
             </p>
           </Reveal>
-          <Reveal delay={0.16} className="mt-9 flex justify-center lg:justify-start">
+          <Reveal
+            delay={0.16}
+            className="mt-9 flex flex-wrap justify-center gap-3 lg:justify-start"
+          >
             <ShopButton size="lg">{product.ctas.final}</ShopButton>
+            <WhatsAppButton size="lg">{product.ctas.whatsapp}</WhatsAppButton>
           </Reveal>
         </div>
       </div>

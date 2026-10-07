@@ -1,9 +1,11 @@
 import { HeroSection } from "@/components/hero-section";
-import { TrustStrip } from "@/components/trust-strip";
+import { AtAGlance } from "@/components/at-a-glance";
 import { WellnessOverview } from "@/components/wellness-overview";
 import { BenefitsSection } from "@/components/benefits-section";
 import { IngredientSystem } from "@/components/ingredient-system";
 import { ProductFacts } from "@/components/product-facts";
+import { WhoItsFor } from "@/components/who-its-for";
+import { WhyChoose } from "@/components/why-choose";
 import { UsageSection } from "@/components/usage-section";
 import { BlogPreviewSection } from "@/components/blog-preview-section";
 import { Testimonials } from "@/components/testimonials";
@@ -46,16 +48,18 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <TrustStrip />
-      <WellnessOverview />
+      <AtAGlance />
       <BenefitsSection />
-      <IngredientSystem />
+      <WellnessOverview />
       <ProductFacts />
+      <IngredientSystem />
+      <WhoItsFor />
+      <WhyChoose />
       <UsageSection />
-      <BlogPreviewSection />
       <Testimonials />
-      <ProductOffer />
       <FaqSection />
+      <ProductOffer />
+      <BlogPreviewSection />
       <FinalCta />
       <script
         type="application/ld+json"

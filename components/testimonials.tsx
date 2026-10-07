@@ -2,6 +2,7 @@ import { MessageSquareHeart, Star, Quote } from "lucide-react";
 import { testimonials } from "@/lib/product-data";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
+import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 
 function initials(name: string) {
   return name
@@ -17,7 +18,7 @@ export function Testimonials() {
     <section className="bg-bg-soft py-16 text-ink sm:py-20">
       <div className="container-page">
         <SectionHeading
-          eyebrow="Social Proof"
+          eyebrow="Customer Reviews"
           title="Dog owners want the best for their dogs."
           align="center"
         />
@@ -60,7 +61,9 @@ export function Testimonials() {
                   </span>
                   <div>
                     <p className="font-display text-sm font-bold text-ink">{t.name}</p>
-                    <p className="text-xs text-ink-muted">{t.location}</p>
+                    <p className="text-xs text-ink-muted">
+                      {[t.location, t.dog, t.date].filter(Boolean).join(" · ")}
+                    </p>
                   </div>
                 </div>
               </Reveal>
@@ -78,9 +81,16 @@ export function Testimonials() {
               Reviews coming soon
             </p>
             <p className="mt-2 text-[14px] leading-relaxed text-ink-muted">
-              We&apos;re collecting real feedback from dog owners. This space
-              will be replaced with verified customer reviews as they come in.
+              We only publish genuine reviews from Nigerian dog owners who
+              have bought the product. Already using it? We&apos;d love to
+              hear how your dog is getting on.
             </p>
+            <WhatsAppButton
+              className="mt-5"
+              message="Hello, I'd like to share a review of the PrimoScience K9 Multi-Benefit Supplement."
+            >
+              Share your review
+            </WhatsAppButton>
           </Reveal>
         )}
       </div>
