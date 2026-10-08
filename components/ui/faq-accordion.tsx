@@ -41,7 +41,7 @@ export function FaqAccordion({
                   isOpen ? "grid-rows-[1fr] pb-5" : "grid-rows-[0fr]"
                 )}
               >
-                <p className="overflow-hidden text-[15px] leading-relaxed text-ink-muted">
+                <p className="overflow-hidden whitespace-pre-line text-[15px] leading-relaxed text-ink-muted">
                   {faq.answer}
                 </p>
               </div>

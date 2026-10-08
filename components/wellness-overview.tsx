@@ -30,10 +30,12 @@ export function WellnessOverview() {
           </Reveal>
           <Reveal delay={0.12}>
             <p className="mt-5 max-w-md text-[1.0625rem] leading-relaxed text-ink-muted">
-              Dog owners care about a lot at once — mobility, digestion, skin
-              and coat, daily nutrition, general wellness. PrimoScience K9
-              brings nutritional support for all of it into one daily soft
-              chew, so it&apos;s easier to make part of your dog&apos;s routine.
+              Your dog&apos;s health is more than just one thing. Mobility,
+              digestion, skin &amp; coat, vitality, and everyday wellness all
+              matter. PrimoScience™ K9 Multi-Benefit Supplement brings
+              comprehensive nutritional support together in one convenient
+              daily soft chew - making whole-body support simple to add to
+              your dog&apos;s daily routine.
             </p>
           </Reveal>
           <Reveal delay={0.18}>

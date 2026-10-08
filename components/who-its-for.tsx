@@ -1,5 +1,4 @@
-import { Stethoscope } from "lucide-react";
-import { whoItsFor, whoItsForNote } from "@/lib/product-data";
+import { whoItsFor } from "@/lib/product-data";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -32,14 +31,6 @@ export function WhoItsFor() {
             </Reveal>
           ))}
         </div>
-
-        <Reveal
-          delay={0.2}
-          className="mt-6 flex items-start gap-3 rounded-xl border border-bg-border bg-bg-soft px-5 py-4"
-        >
-          <Stethoscope className="mt-0.5 h-4 w-4 shrink-0 text-highlight" strokeWidth={2} />
-          <p className="text-sm leading-relaxed text-ink-muted">{whoItsForNote}</p>
-        </Reveal>
       </div>
     </section>
   );

@@ -11,11 +11,15 @@ import { Reveal } from "@/components/ui/reveal";
 import { ShopButton } from "@/components/ui/shop-button";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 
-const localTrust = [
+const localTrust: { label: string; icon: typeof MapPin; href?: string }[] = [
   { label: "In stock and available in Nigeria", icon: MapPin },
   { label: "Home delivery in Lagos, shipping to other states", icon: Truck },
   { label: `Secure checkout with ${siteConfig.petshopPlus.name}`, icon: LockKeyhole },
-  { label: `Or buy in store: ${siteConfig.contact.outlets}`, icon: Store },
+  {
+    label: `Or buy in store: ${siteConfig.contact.outlets}`,
+    icon: Store,
+    href: siteConfig.contact.outletsUrl,
+  },
 ];
 
 export function ProductOffer() {
@@ -122,7 +126,18 @@ export function ProductOffer() {
               {localTrust.map((item) => (
                 <li key={item.label} className="flex items-start gap-2.5">
                   <item.icon className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                  <span>{item.label}</span>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline decoration-accent/50 underline-offset-4 transition-colors hover:text-accent"
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <span>{item.label}</span>
+                  )}
                 </li>
               ))}
             </ul>

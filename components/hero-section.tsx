@@ -27,7 +27,7 @@ export function HeroSection() {
 
           <Reveal delay={0.08}>
             <h1 className="mt-5 font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-tight text-balance sm:text-[3rem] lg:text-[3.3rem]">
-              One Soft Chew. <span className="text-accent">Four Areas of Support.</span>
+              One Soft Chew. <span className="text-accent">Broad-Spectrum Areas of Support.</span>
             </h1>
           </Reveal>
 
@@ -49,7 +49,7 @@ export function HeroSection() {
               {activeCount} key active ingredients in every chew, including
               glucosamine, chondroitin, MSM, wild Alaskan salmon oil and a
               1 billion CFU probiotic blend. A daily supplement for dogs,
-              available in Nigeria.
+              available in leading pet stores in Nigeria.
             </p>
           </Reveal>
 
