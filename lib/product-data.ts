@@ -26,7 +26,7 @@ export const product = {
   brand: "PrimoScience",
   manufacturer: "Transcendent Pet Products Inc.",
   category: "Dog vitamins and supplements",
-  tagline: "One soft chew. Four areas of support.",
+  tagline: "One soft chew. Broad-spectrum areas of support.",
   description:
     "PrimoScience K9 Multi-Benefit Supplement combines nutritional support for joints, digestion, skin and coat, and everyday wellness in one convenient soft chew.",
   price: 25500,
@@ -262,9 +262,6 @@ export const whoItsFor: { title: string; copy: string; icon: LucideIcon }[] = [
   },
 ];
 
-export const whoItsForNote =
-  "If your dog is a puppy, pregnant or nursing, has a medical condition, takes medication, or is on a special diet, speak to your veterinarian before adding any supplement.";
-
 export const whyChoose: { title: string; copy: string; icon: LucideIcon }[] = [
   {
     title: `${activeCount} key active ingredients`,
@@ -338,88 +335,148 @@ export const usageSteps: { title: string; copy: string; icon: LucideIcon }[] = [
 ];
 
 export type Testimonial = {
-  name: string;
-  location: string;
+  /** What the review is about, e.g. "Skin & coat" -- the card's heading. */
+  title: string;
   quote: string;
   rating: number;
-  /** e.g. "March 2026" -- shown on the card when present. */
+  /** Reviewer details -- shown on the card only when supplied. */
+  name?: string;
+  location?: string;
+  /** e.g. "March 2026" */
   date?: string;
-  /** e.g. "Labrador, 6 yrs" -- shown on the card when present. */
+  /** e.g. "Labrador, 6 yrs" */
   dog?: string;
   /** Path under /public for a customer or dog photo. */
   photo?: string;
 };
 
-// Genuine, verified customer reviews only. The earlier placeholder set was
-// removed after the 2026 client review -- while this is empty the section
-// shows a "Reviews coming soon" state. Don't add reviews that promise a
-// specific health outcome.
-export const testimonials: Testimonial[] = [];
+// Reviews supplied by the client in the October 2026 review doc. They came
+// without reviewer names, so none are shown -- never invent a name, location
+// or photo for one. If this array is emptied the section falls back to a
+// "Reviews coming soon" state.
+export const testimonials: Testimonial[] = [
+  {
+    title: "Overall wellness",
+    rating: 5,
+    quote:
+      "I love having several areas of nutritional support in one daily chew. It’s convenient, easy to add to my dog’s routine, and he genuinely looks forward to getting it every day.",
+  },
+  {
+    title: "Palatability",
+    rating: 5,
+    quote:
+      "My dog can be very picky with supplements, but he takes PrimoScience K9 like a treat. No hiding tablets in food or trying to convince him to eat it. That alone makes our daily routine much easier.",
+  },
+  {
+    title: "Mobility",
+    rating: 5,
+    quote:
+      "I started adding PrimoScience K9 to my dog’s daily routine because I wanted additional nutritional support for his mobility and overall wellness. I really like that one soft chew provides multiple benefits rather than having to give several different supplements.",
+  },
+  {
+    title: "Skin & coat",
+    rating: 5,
+    quote:
+      "PrimoScience K9 has become part of our everyday routine. I originally chose it for the skin and coat support, but I like that it also provides nutritional support for other areas of my dog’s health.",
+  },
+  {
+    title: "Convenience",
+    rating: 5,
+    quote:
+      "What I like most is the convenience. Instead of buying several different supplements, PrimoScience K9 combines multiple areas of support into one soft chew. Simple for me and easy for my dog.",
+  },
+  {
+    title: "Daily routine",
+    rating: 5,
+    quote:
+      "We’ve made PrimoScience K9 part of our dog’s daily wellness routine. He loves the soft chew, and I like knowing I’m providing additional nutritional support for mobility, digestion, skin & coat, and general wellness.",
+  },
+  {
+    title: "Taste",
+    rating: 5,
+    quote:
+      "Excellent daily supplement. My dog loves the taste, and I love the convenience of getting multiple areas of nutritional support from one soft chew. Definitely staying in our daily routine.",
+  },
+  {
+    title: "Treat time",
+    rating: 5,
+    quote:
+      "My dog thinks it’s a treat—I know it’s his daily supplement! 😂 PrimoScience K9 makes it so easy to add extra nutritional support to his everyday routine.",
+  },
+];
 
+// Questions and answers supplied verbatim by the client (October 2026 review
+// doc). Blank lines inside an answer render as paragraph breaks.
 export const faqs: { question: string; answer: string }[] = [
   {
     question: "What is PrimoScience K9 Multi-Benefit Supplement?",
-    answer: `It's a soft chew supplement for dogs with ${activeCount} key active ingredients, formulated to provide nutritional support for joint health, digestion, skin and coat, and everyday wellness.`,
+    answer:
+      "PrimoScience™ K9 Multi-Benefit Supplement is an all-in-one daily soft chew designed to provide comprehensive nutritional support for your dog from nose to tail. Its scientifically formulated multi-benefit approach supports hips & joints and articulation, skin & coat, eye and heart health, muscle support, digestion with probiotics, appetite, vitality, antioxidant support, and immune health, with folic acid as part of its nutritional formulation.\n\nInstead of giving your dog several different supplements every day, PrimoScience™ K9 brings multiple areas of support together in one convenient soft chew - making it easier to support your dog’s everyday health and wellness.",
   },
   {
     question: "How many chews should I give my dog?",
     answer:
-      "The daily serving depends on your dog's weight. Follow the directions panel on the jar, and if you're unsure which serving applies, message us on WhatsApp with your dog's weight before you start.",
+      "The recommended daily serving is based on your dog’s weight. Please follow the feeding directions on the product label. If you’re unsure which serving is right for your dog, simply send us a WhatsApp message with your dog’s weight before starting. You’ll find our WhatsApp number in the “Contact Us” section at the bottom right of this page.",
   },
   {
     question: "How long will one jar last?",
-    answer: `A jar contains approximately ${product.chewCount} soft chews. At 1 chew a day that's about 60 days, at 2 a day about 30 days, and at 3 a day about 20 days, depending on the serving for your dog's weight.`,
-  },
-  {
-    question: "Is it suitable for puppies?",
     answer:
-      "Puppies have different nutritional needs while they're growing. Check the directions on the jar and confirm with your veterinarian before giving this supplement to a puppy.",
+      "Each jar contains approximately 60 soft chews. How long it lasts depends on your dog’s recommended daily serving based on their weight. At 1 chew per day, a jar lasts about 60 days; at 2 chews per day, about 30 days; and at 3 chews per day, about 20 days.",
   },
   {
-    question: "Is it suitable for senior dogs?",
+    question: "Is PrimoScience™ K9 suitable for puppies?",
     answer:
-      "The formula includes glucosamine, chondroitin and MSM, which are commonly chosen for older dogs. If your senior dog has a health condition or takes medication, check with your veterinarian first.",
+      "Yes. PrimoScience™ K9 Multi-Benefit Supplement is suitable for puppies. It provides multi-benefit nutritional support to complement your puppy’s daily diet as they grow and develop. Simply follow the recommended daily serving based on your puppy’s weight.",
   },
   {
-    question: "Can I give it with my dog's regular food?",
+    question: "Is PrimoScience™ K9 suitable for senior dogs?",
     answer:
-      "Yes. It's a supplement that complements a complete and balanced diet rather than replacing it. The soft chew can be given by hand like a treat or alongside a meal.",
+      "Yes. PrimoScience™ K9 is an excellent choice for senior dogs. Its multi-benefit formula includes glucosamine, chondroitin, and MSM to provide nutritional support for joint health and mobility, while its other nutrients help support your senior dog’s muscles, digestion, skin & coat, immune health, vitality, and overall wellness as they age.",
   },
   {
-    question: "Can I use it with other supplements?",
+    question: "Can I give PrimoScience™ K9 with my dog’s regular food?",
     answer:
-      "Check the labels for overlapping ingredients first, such as glucosamine or the same vitamins, and ask your veterinarian before combining supplements.",
+      "Yes. PrimoScience™ K9 is designed to complement your dog’s complete and balanced diet, not replace it. The soft chew can be given directly by hand as a tasty daily treat or served alongside your dog’s regular meal, whichever works best for your routine.",
   },
   {
-    question: "What flavour is it?",
-    answer: "Peanut butter banana. The soft chews contain no artificial flavours or colours.",
+    question: "Can I use PrimoScience™ K9 with other supplements?",
+    answer:
+      "Possibly, but check for overlapping ingredients first. Other supplements may contain some of the same ingredients found in PrimoScience™ K9, such as glucosamine, vitamins, or other nutrients. To avoid unnecessary duplication or excessive intake, review the ingredient labels carefully and consult your veterinarian before combining supplements, especially if your dog is already taking other supplements or medications.",
   },
   {
-    question: "Does it contain common allergens?",
-    answer: `The glucosamine is sourced from shellfish, the chondroitin is porcine (pork-derived), and the chews are peanut butter banana flavoured. The product is gluten free. Inactive ingredients are: ${inactiveIngredients.join(", ").toLowerCase()}. If your dog has a known allergy or food sensitivity, check with your veterinarian before use.`,
+    question: "What flavour is PrimoScience™ K9?",
+    answer:
+      "PrimoScience™ K9 soft chews have a delicious peanut butter and banana flavour designed to make daily supplementation something your dog can look forward to. No artificial flavours or colours.",
+  },
+  {
+    question: "Does PrimoScience™ K9 contain common allergens?",
+    answer:
+      "PrimoScience™ K9 is gluten-free. However, it contains shellfish-derived glucosamine and porcine (pork-derived) chondroitin. The soft chews have a peanut butter & banana flavour, which is listed as non-allergenic in the formulation.\n\nOther inactive ingredients include citric acid (preservative), RSPO palm-derived glycerin, inulin, organic RSPO palm fruit oil, sunflower lecithin, and sweet potato flour.\n\nIf your dog has a known food allergy or sensitivity, we recommend reviewing the ingredients carefully and consulting your veterinarian before use.",
   },
   {
     question: "What ingredients are included?",
     answer:
-      "Per 3.5 g chew: glucosamine HCl 200mg, chondroitin sulfate 100mg, MSM 100mg, wild Alaskan salmon oil 100mg, taurine 100mg, a 1 billion CFU probiotic blend, plus vitamins C, E, B1, B2, B6, B12 and folic acid.",
+      "Each 3.5 g PrimoScience™ K9 soft chew contains a carefully selected combination of functional ingredients, including 200 mg glucosamine HCl, 100 mg chondroitin sulfate, 100 mg MSM, 100 mg wild Alaskan salmon oil, and 100 mg taurine.\n\nIt also provides a 1 billion CFU probiotic blend, together with essential vitamins including vitamins C, E, B1, B2, B6, B12, and folic acid—bringing multiple areas of nutritional support together in one convenient daily soft chew.",
   },
   {
-    question: "How should it be stored?",
-    answer: product.storage,
-  },
-  {
-    question: "Who makes it?",
-    answer: `PrimoScience is a brand of ${product.manufacturer} In Nigeria it is sold and fulfilled by Petshop Plus.`,
-  },
-  {
-    question: "Is it suitable during pregnancy or lactation?",
+    question: "How should PrimoScience™ K9 be stored?",
     answer:
-      "Speak to your veterinarian before giving any supplement to a pregnant or nursing dog.",
+      "Store PrimoScience™ K9 in a cool, dry place below 27°C (80°F). Keep the jar tightly sealed when not in use to help maintain the quality and freshness of the soft chews.",
+  },
+  {
+    question: "Who makes PrimoScience™ K9?",
+    answer:
+      "PrimoScience™ is a brand of Transcendent Pet Products Inc., Canada. In Nigeria, PrimoScience™ K9 Multi-Benefit Supplement is marketed, sold, and fulfilled by PetShop Plus, making it readily accessible to dog owners across the country.",
+  },
+  {
+    question: "Is PrimoScience™ K9 suitable during pregnancy or lactation?",
+    answer:
+      "Yes. PrimoScience™ K9 can provide valuable nutritional support during pregnancy and lactation. The formula contains folic acid (vitamin B9), an essential nutrient involved in normal cell division and fetal development. Adequate folate is important during early development, including normal formation of the neural tube.",
   },
   {
     question: "How do I order, and do you deliver?",
     answer:
-      "Choose your quantity in the order section and tap \"Buy Now\" to add it to your Petshop Plus cart, or tap \"Order on WhatsApp\" to send us your order by chat. Petshop Plus offers home delivery within Lagos and ships to other parts of Nigeria through transport partners. Delivery costs are shown at checkout.",
+      "Ordering is quick and easy. Simply select your preferred quantity in the order section and tap “Buy Now” to add PrimoScience™ K9 to your PetShop Plus cart. Prefer to order by chat? Tap “Order on WhatsApp” and send your order directly to our team.\n\nYes, we deliver. PetShop Plus offers home delivery within Lagos and ships to other parts of Nigeria through our transport partners. Applicable delivery charges will be displayed at checkout.",
   },
 ];
 

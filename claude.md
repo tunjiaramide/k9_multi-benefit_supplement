@@ -57,6 +57,33 @@ section conflicts with older text further down, this section wins.
   lives at %USERPROFILE%\.local\node\node-v22.23.3-win-x64 -- prepend it
   to PATH before running npm.
 
+REVISION PASS 4 (2026-10-08): second client review doc (public/multik9.docx)
+implemented. Where this conflicts with PASS 3 above, this wins.
+- Hero H1 is now "One Soft Chew. Broad-Spectrum Areas of Support." (client
+  asked for "Four" -> "Broad-Spectrum"); `product.tagline` matches. Hero copy
+  ends "available in leading pet stores in Nigeria."
+- wellness-overview paragraph replaced with the client's wording.
+- The vet-advice note under who-its-for (`whoItsForNote`) was deleted at the
+  client's request.
+- WhatsApp number is now 0707 604 8019 (+234 707 604 8019), the client's
+  own line. The old 0704 558 4152 came from petshopplus.ng's shipping page
+  and the client did not recognise it -- don't reuse it.
+- `testimonials` now holds the 8 reviews supplied in the client doc. They
+  came with no reviewer names, so cards show a theme title + quote + stars
+  and no byline. Never invent names/locations/photos for them, and don't add
+  Review/AggregateRating JSON-LD on the strength of these.
+- "Share your review" goes to `siteConfig.googleReviewUrl`, not WhatsApp.
+  It defaults to the Google reviews link the owner supplied (a copied
+  search-results URL, so it may not be permanent); override with
+  NEXT_PUBLIC_GOOGLE_REVIEW_URL if a g.page/r/.../review link is supplied.
+- `faqs` replaced wholesale with the client's 14 Q&As, verbatim ("\n\n" in
+  an answer renders as a paragraph break via whitespace-pre-line in
+  faq-accordion.tsx). These are less conservative than the old answers
+  (e.g. "Yes" for puppies and for pregnancy/lactation) -- client's wording,
+  keep it unless they revise.
+- The "Or buy in store" line in product-offer.tsx links to
+  `siteConfig.contact.outletsUrl` (Petshop Plus contact page).
+
 All sections below have been updated in place rather than left as a
 changelog.
 

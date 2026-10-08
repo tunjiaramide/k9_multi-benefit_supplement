@@ -75,10 +75,21 @@ export const siteConfig = {
     outletsUrl: "https://petshopplus.ng/contact/",
   },
 
+  /**
+   * Where "Share your review" sends people: the Petshop Plus Google reviews
+   * panel, using the link the owner supplied. It's a copied search-results
+   * URL rather than a permanent place link, so if it ever stops opening the
+   * reviews panel, replace it (or set NEXT_PUBLIC_GOOGLE_REVIEW_URL) with
+   * the Business Profile's https://g.page/r/.../review link.
+   */
+  googleReviewUrl:
+    process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL ??
+    "https://www.google.com/search?q=petshopplus&oq=petshopplus&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg8MggIAhAAGAoYHjIKCAMQABiABBiiBDIKCAQQABiABBiiBDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDY3MzRqMGo3qAIIsAIB8QUv2fAt0moW_Q&sourceid=chrome&source=chrome.ob&ie=UTF-8#sv=CAESzQEKuQEStgEKd0FKaVQ0dExiVEVTbGljdzROanlKcjVwcU5aNU5UaDJrWDVkQzBBNExQazFPclV2LTF4dm96dGRKUGJDUnVjaG9sRG5hMk1kdldTTkpDQWZNdmFFSFRPY1JVQVdoWm8xR0Zqb2FVa1U5dGVRTnRrQU9VdllxU01NEhc4M19IYXZMMENlaUktZDhQN05HbjBBNBoiQURzcjlmVEV1N2RmcF9XUjgwNGhyXzZaSk1SVE9pYnJVZxIEODA1MRoBMyoAMAA4AUAAGAAgluCQnQI6AEoCEAE",
+
   whatsapp: {
-    // Defaults to the WhatsApp line listed on petshopplus.ng's shipping page.
-    number: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "2347045584152").replace(/\D/g, ""),
-    display: "0704 558 4152",
+    // The WhatsApp line supplied by the client (October 2026 review).
+    number: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "2347076048019").replace(/\D/g, ""),
+    display: "0707 604 8019",
     defaultMessage:
       "Hello, I have a question about the PrimoScience K9 Multi-Benefit Supplement.",
     link(message?: string) {
