@@ -84,6 +84,22 @@ implemented. Where this conflicts with PASS 3 above, this wins.
 - The "Or buy in store" line in product-offer.tsx links to
   `siteConfig.contact.outletsUrl` (Petshop Plus contact page).
 
+REVISION PASS 5 (2026-11-04): client supplied final blog copy
+("Primoscience Blog Articles for Primoscience website Oct 2026.docx",
+deleted after import, never committed). 8 of the 9 posts in content/blog/
+now carry the client's text verbatim (only Markdown structure + internal
+links added): k9-multi-benefit-supplement-guide, dog-vitamins-nigeria,
+dog-joint-supplement-nigeria, glucosamine-for-dogs-nigeria,
+dog-probiotic-supplement-nigeria, dog-salmon-oil-supplement-nigeria,
+dog-health-supplements-lagos, best-dog-supplements-nigeria. Titles and
+descriptions/excerpts were rewritten to match. Their old `faqs`
+frontmatter was removed (not in the client copy, and some old answers
+contradicted the more cautious new text), so those posts no longer show
+an FAQ accordion or emit FAQPage JSON-LD. The client doc had no article
+for dog-supplements-nigeria-guide, so that post still has its old text
+and FAQs. The "CONTENT DEPTH PASS" notes below (800-1125 words, 5 FAQs
+per post) no longer describe the 8 client posts (~500-700 words each).
+
 All sections below have been updated in place rather than left as a
 changelog.
 
